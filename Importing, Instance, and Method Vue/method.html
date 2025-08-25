@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+    <title>Document</title>
+</head>
+<body>
+    <div id="app">
+        {{ message }}
+
+        <p>
+            {{ myfunc() }}
+        </p>
+    </div>
+</body>
+<script>
+    const App = {
+        data() {
+            return {
+                message: 'Selamat Datang',
+                isItTrue: false,
+                myArray: [
+                    'vieri',
+                    'arief',
+                    'maulana'
+                ]
+            }
+        },
+        methods: {
+            myfunc(){
+                const randomArray = this.myArray[Math.floor(Math.random() * this.myArray.length)]
+                if (this.isItTrue){
+                    return this.message
+                }
+                return randomArray
+            }
+        },
+    }
+    Vue.createApp(App).mount('#app')
+
+    
+</script>
+</html>
