@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+    <title>Document</title>
+</head>
+<body>
+    <div id="app">
+        <p v-if="checkWeight()">
+            Teks ini muncul karena berat melebihi batas.
+        </p>
+        <p v-else-if="checkNama()">
+            Nama saya vieri.
+        </p>
+        <p v-else-if="age < 25">
+            Umur saya kurang dari 25.
+        </p>
+        <p v-else>
+            Kamu tidak boleh bertanding.
+        </p>
+        <p v-show="checkWeight()">
+            ini menggunakan v-show
+        </p>
+    </div>
+</body>
+<script>
+    const App = {
+        data() {
+            return {
+                weight: 70,
+                allowedWeight: 60,
+                age: 20,
+                nama: 'vieri g',
+            }
+        },
+        methods: {
+            checkWeight() {
+                return this.weight > this.allowedWeight;
+            },
+            checkNama() {
+                return this.nama === 'vieri';
+            }
+        },
+    }
+    Vue.createApp(App).mount('#app');
+</script>
+</html>
