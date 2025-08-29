@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+    <title>Document</title>
+</head>
+<body>
+    <div id="app">
+       <!-- bisa pakai 'v-on:' -->
+        <input type="text" v-on:keyup.enter="showEvent"> 
+       <br>
+        <!-- atau '@' sebagai pengganti 'v-on:' -->
+       <input type="text" @keyup.enter="showEvent2"> 
+
+    </div>
+</body>
+<script>
+    const App = {
+        data() {
+            return {
+             name: 'vieri',
+
+            }
+        },
+        methods: {
+           showEvent(event){
+            console.log(event.target.value)
+           },
+           showEvent2(event){
+            console.log(event.target.value)
+           }
+        },
+    }
+    Vue.createApp(App).mount('#app');
+</script>
+<style>
+    .box {
+        background-color: blue;
+        color: aliceblue;
+        width: 200px;
+        height: 200px;
+    }
+</style>
+</html>

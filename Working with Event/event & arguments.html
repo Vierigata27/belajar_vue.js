@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+    <title>Document</title>
+</head>
+<body>
+    <div id="app">
+       <p>
+        {{ name }}
+       </p>
+       <div v-on:click="updateName('Arief', $event)">
+            ganti nama
+       </div>
+       <form v-on:submit="handleForm">
+        <input />
+        <button type="submit">
+            submit form
+        </button>
+       </form>
+       
+
+    </div>
+</body>
+<script>
+    const App = {
+        data() {
+            return {
+             name: 'vieri',
+
+            }
+        },
+        methods: {
+            updateName(newName, event){
+                console.log(event)
+                this.name = newName
+            },
+            handleForm(){
+                console.log('submited')
+            },
+        },
+    }
+    Vue.createApp(App).mount('#app');
+</script>
+<style>
+    .box {
+        background-color: blue;
+        color: aliceblue;
+        width: 200px;
+        height: 200px;
+    }
+</style>
+</html>
