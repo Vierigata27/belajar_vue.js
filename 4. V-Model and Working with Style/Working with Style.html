@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+    <title>Document</title>
+</head>
+<body>
+    <div id="app">
+        <div class="box"
+        v-bind:class="{blue: blueColor}">
+            this is my box with normal css
+        </div>
+
+        <div v-on:click="blueColor = !blueColor">
+            ganti warna
+        </div>
+
+        <div class="box"
+        v-bind:class="colors">
+            this is my box with blue
+        </div>
+
+        <div v-on:click="colors.white = !colors.white">
+            ganti warna putih
+        </div>
+
+        <div class="box"
+        v-bind:class="[
+        colorStyle.blueStyle.active ? colorStyle.blueStyle.name: '',
+        colorStyle.whiteStyle.active ? colorStyle.whiteStyle.name: ''
+        ]">
+            this is my box with blue dengan array
+        </div>
+
+        <div class="box"
+        v-bind:class="[
+        colorStyle2.blueStyle.active ? colorStyle2.blueStyle.name: '',
+        colorStyle2.whiteStyle.active ? colorStyle2.whiteStyle.name: ''
+        ]"
+        v-bind:style="newStyle"
+        >
+            this is my box with blue dengan array 2
+        </div>
+
+        <div v-on:click="colorStyle2.whiteStyle.active = !colorStyle2.whiteStyle.active">
+            ganti warna array 2
+        </div>
+
+
+    </div>
+</body>
+<script>
+    const App = {
+        data() {
+            return {
+                newStyle:{
+                    fontSize: '40px',
+                    border: '5px solid yellow' 
+                },
+
+                blueColor: true,
+
+                colors: {
+                    blue: false,
+                    white : true
+                },
+
+                colorStyle: {
+                    blueStyle: 'blue',
+                    whiteStyle: 'white'
+                },
+
+                colorStyle2: {
+                    blueStyle: {
+                      name: 'blue',
+                      active: true  
+                    },
+                    whiteStyle: {
+                      name: 'white',
+                      active: false  
+                    },
+                },
+
+
+            }
+
+        },
+
+        methods: { 
+
+
+        },
+    }
+    Vue.createApp(App).mount('#app');
+</script>
+<style>
+    .box {
+        color: white;
+        background-color:black;
+        padding: 20px;
+    }
+    .blue {
+        background: blue;
+    }
+    .white {
+        background:  white;
+        color: black;
+    }
+    .large {
+        font-size: 40px;
+    }
+</style>
+</html>

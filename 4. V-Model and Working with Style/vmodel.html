@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+    <title>Document</title>
+</head>
+<body>
+    <div id="app">
+       <form v-on:submit.prevent="handleForm">
+        <label for="">First Name</label>
+        <input type="text" v-model.lazy="dataPerson.firtsName" />
+        {{ dataPerson.firtsName }}
+        <hr>
+
+        <label for="">Last Name</label>
+        <input type="text" v-model='dataPerson.lastName'/>
+        {{ dataPerson.lastName }}
+        <hr>
+
+        <label for="">Age</label>
+        <input type="text" v-model.number='dataPerson.age'/>
+        {{ dataPerson.age }}
+        <hr>
+
+         <label for="">gmail</label>
+        <input type="text" v-model.trim='dataPerson.gmail'/>
+        {{ dataPerson.gmail }}
+        <hr>
+
+        <label for="">Check Box</label>
+        <input type="checkbox" id="myCheckbox" v-model="dataPerson.check"/>
+        {{ dataPerson.check }}
+        <br>
+
+       <button type="submit"> Submit Form</button>
+       </form>
+
+
+
+    </div>
+</body>
+<script>
+    const App = {
+        data() {
+            return {
+            dataPerson:{
+                firtsName: '',
+                lastName: 'Maulana',
+                age: '',
+                gmail: '',
+                check: false          
+                }
+            }
+        },
+        methods: {
+            handleForm(){
+                console.log(this.dataPerson.firtsName)
+                console.log(this.dataPerson.lastName)
+                console.log(this.dataPerson.age)
+                console.log(this.dataPerson.gmail)
+                console.log(this.dataPerson.check)
+            }
+        },
+    }
+    Vue.createApp(App).mount('#app');
+</script>
+</html>
