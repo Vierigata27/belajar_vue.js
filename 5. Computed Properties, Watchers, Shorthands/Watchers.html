@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+    <title>Document</title>
+</head>
+<body>
+    <div id="app">
+        <input type="text" v-model="name"/>
+
+        <button v-on:click="handleActive">
+            Active
+        </button>
+        <br>
+        {{  message() }} ----- {{ compMessage }}
+        <br>
+        {{ mesActive() }} ----- {{ compActive }}
+
+
+    </div>
+</body>
+<script>
+    const App = {
+        data() {
+            return {
+                name: '',
+                active: false,
+            }
+
+        },
+
+        watch: {
+            active(value){
+                if(value === true) {
+                    this.name = 'vieri'
+                } else {
+                    this.name=''
+                }
+                console.log(value);
+                console.log('watch aktiv');
+            },
+            name(value){
+                if (value === 'sidoarjo'){
+                    alert('itu nama kota')
+                }
+            }
+        },
+
+        computed: {
+            compMessage(){
+                console.log('Computed Message Typing Message')
+                return this.name === 'vieri' ? 'Welcome Home' : 'Kamu Tidak Diperbolehkan Masuk'
+            },
+            compActive(){
+                 console.log('Computed Active Message')
+                return this.active === true ? 'pesan ini aktif' : 'ini tidak aktiv'
+            }
+        },
+
+        methods: { 
+            message(){
+                console.log('Typing Message')
+                return this.name === 'vieri' ? 'Welcome Home' : 'Kamu Tidak Diperbolehkan Masuk'
+            },
+            mesActive() {
+                console.log('Active Message')
+                return this.active === true ? 'pesan ini aktif' : 'ini tidak aktiv'
+            },
+            handleActive(){
+                console.log('handle active')
+                this.active = !this.active
+            },
+
+        },
+    }
+    Vue.createApp(App).mount('#app');
+</script>
+<style>
+    .box {
+        color: white;
+        background-color:black;
+        padding: 20px;
+    }
+    .blue {
+        background: blue;
+    }
+    .white {
+        background:  white;
+        color: black;
+    }
+    .large {
+        font-size: 40px;
+    }
+</style>
+</html>
