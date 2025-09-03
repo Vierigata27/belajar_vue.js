@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+    <title>Document</title>
+</head>
+<body>
+    <div id="app">
+        <username></username>
+        <header-apps></header-apps>
+        <footer-apps></footer-apps>
+    </div>
+</body>
+<script>
+    const App = Vue.createApp({})
+
+     App.component( 'header-apps', {
+        data() {
+            return {
+                name: 'HEADER',
+            }
+        },
+        template: '<div class="box"> {{ name }} </div>',
+
+        methods: { 
+        },
+    })
+
+    App.component( 'username', {
+        data() {
+            return {
+                name: 'Vieri',
+                value: 'Instance',
+            }
+        },
+        template: '<div class="hijau"> {{ name }} </div>',
+
+        methods: { 
+        },
+    })
+
+    App.component ('footer-apps', {
+        data(){
+            return{
+                name: 'Apps ini dibuat oleh vieri'
+            }
+        },
+        template: '<div class="blue"> {{ name }} </div>',
+    })
+
+    App.mount('#app')
+
+
+</script>
+
+<style>
+    .hijau {
+        color: black;
+        background-color: green;
+        padding: 50px;
+    }
+    .box {
+        color: white;
+        background-color:black;
+        padding: 20px;
+    }
+    .blue {
+        background-color: blue;
+         font-size: 50px;
+    }
+    .white {
+        background:  white;
+        color: black;
+    }
+    .large {
+        font-size: 40px;
+    }
+</style>
+</html>

@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+    <title>Document</title>
+</head>
+<body>
+    <div id="app">
+        <p>
+        {{ value }}
+        </p>
+        <button @click="changeValue">
+            change value App 2 
+        </button>
+    </div>
+    <div id="app2">
+        <p>
+         {{ value }}
+        </p>
+
+        <button @click="greetingMes">
+            Home
+        </button>
+
+
+    </div>
+</body>
+<script>
+    let greeting = 'welcome home'
+
+    const App = {
+        data() {
+            return {
+                name: '',
+                value: 'Instance',
+            }
+
+        },
+        methods: { 
+          changeValue () {
+            console.log(App2.value)
+            App2.value = 'merubah Value App 2'
+          }
+        },
+    }
+    Vue.createApp(App).mount('#app');
+
+     const App2 = Vue.createApp({
+        data() {
+            return {
+                value: 'Instance 2',
+            }
+        },
+        methods: { 
+          greetingMes (){
+            alert (greeting)
+          }
+        },
+    }).mount('#app2');
+</script>
+
+<style>
+    .box {
+        color: white;
+        background-color:black;
+        padding: 20px;
+    }
+    .blue {
+        background: blue;
+    }
+    .white {
+        background:  white;
+        color: black;
+    }
+    .large {
+        font-size: 40px;
+    }
+</style>
+</html>
