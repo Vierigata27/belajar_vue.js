@@ -1,37 +1,49 @@
 <template>
-    <div>
-        <app-header></app-header>
-        <div class="container">
-        <profile-Page 
-            :name="name"
-            age="20"
-        ></profile-Page>
-        
-        <button @click="updateName">
-            Ganti Nama
-        </button>
-        </div>
+    <app-header></app-header>
 
-        <app-footer></app-footer>
+    <div>
+        CHILDERN
+    <comp-cars>  
+    </comp-cars>
+
+    PARRENTS
+    <ul>
+        <li v-for="(car, index) in cars" :key="index">
+            {{ car.brand }} : {{ car.model }}
+        </li>
+     </ul>
+     <button @click="changeCar"> ubah mobil</button>
     </div>
+
+    <app-footer></app-footer>
 </template>
 
 <script>
-import profilePage from './components/User/profilePage.vue';
+import compCars from './components/Cars/index.vue';
 
     export default {
-    components: {
-        profilePage
-    },
+        components: {
+            compCars
+        },
         data(){
             return{
-                name: 'Gata'
+              cars: [
+                    {model: 'Jazz', brand: 'Honda'},
+                    {model: 'Yaris', brand: 'Toyota'},
+                    {model: 'Omoda', brand: 'Cerry'},
+                ]
+            }
+        },
+        provide() {
+            return {
+            cars: this.cars,
+                changeCar: this.changeCar
             }
         },
         methods: {
-            updateName() {
-                this.name = "Maulana"
-            }
+           changeCar() {
+            this.cars[0].brand = 'isuzu'
+           }
         }
     }
 </script>
